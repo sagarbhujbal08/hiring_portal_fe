@@ -1,0 +1,31 @@
+.headerContent{
+    background: #232796;
+    padding: 15px 0;
+}
+.headerContent img{
+    margin: 0 auto !important;
+}
+.hiring{
+    color: #fff;
+}
+.hiring-text{
+    padding-top: 20px;
+}
+.footer_img{
+    width: 100%;
+}
+.hideVisibility{
+    height: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+}
+.whatsapp-icon{
+    padding-top: 5px;
+}
+.report .css-quj9j6-MuiTable-root{
+    min-width: 100%;
+}
+.tableContainer .css-1ygcj2i-MuiTableCell-root{
+    font-weight: 700;
+}

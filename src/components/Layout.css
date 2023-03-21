@@ -1,0 +1,29 @@
+.inputDesign{
+    display: block;
+    padding-top: 10px;
+}
+.layout .css-12dv9jb {
+  min-width: 100%;
+}
+
+.css-1v5z4dq-MuiPaper-root-MuiCard-root{
+  margin: 10px 35%;
+  
+}
+.viewBtn{
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.viewBtn button{
+  position: absolute;
+  bottom: 8px;
+  right: 20px;
+}
+
+@media screen and (max-width: 767px) {
+  .css-1v5z4dq-MuiPaper-root-MuiCard-root{
+    margin: unset;
+  }
+}
