@@ -1,6 +1,6 @@
 import './App.css';
 import * as React from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, HashRouter } from 'react-router-dom';
 import MainRoute from './components/MainRoute';
 import Header from './components/Header';
 import Footer from './components/Footer';
@@ -8,11 +8,11 @@ import Footer from './components/Footer';
 function App() {
   return (
     <div className="App">
-      <BrowserRouter>
+      <HashRouter>
         <Header />
         <MainRoute />
         <Footer />
-      </BrowserRouter>
+      </HashRouter>
     </div>
   );
 }

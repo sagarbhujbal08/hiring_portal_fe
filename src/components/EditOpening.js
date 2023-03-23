@@ -46,13 +46,18 @@ const EditOpening = (props) =>{
     const initialFormState = { _id: null, jobdescription: '', noofvacancy: '', position: '', yearofexperience: '' }
     const [submitted, setSubmitted] = useState(false);
     const [opening, setOpening] = useState(initialFormState);
+    const [jdWordCount, setJdWordCount] = useState(0);
 
     useEffect(()=>{
         setOpening(location.state.opening);
     },[location.state.opening]);
-    
+
     const handleInputChange = event =>{
         const { name, value } = event.target;
+        if(name === 'jobdescription'){
+            setJdWordCount(value.split(' ').length);
+
+        }
         setOpening({...opening, [name]: value});
     }
 
@@ -67,13 +72,13 @@ const EditOpening = (props) =>{
     };
 
     const card = (
-    <>
+    <div className='layout'>
         <form
         onSubmit={event => {
             event.preventDefault();
             setSubmitted(true);
             if (!opening.jobdescription || !opening.noofvacancy || !opening.position || !opening.yearofexperience) return;
-            if(opening.noofvacancy > 100 || opening.yearofexperience > 15 || opening.noofvacancy < 1 || opening.yearofexperience < 0){
+            if(jdWordCount > 500 || opening.noofvacancy > 100 || opening.yearofexperience > 15 || opening.noofvacancy < 1 || opening.yearofexperience < 0){
                 return;
             }
             updateCurrentOpening(opening);
@@ -94,6 +99,7 @@ const EditOpening = (props) =>{
                 onChange={handleInputChange}
                 />
                 <FormHelperText className="error-text" id="my-helper-text">{(getOpeningInfo().jobdescription === '' && submitted === true) ? 'Please enter job description' : null}</FormHelperText>
+                <FormHelperText className="error-text" id="my-helper-text">{jdWordCount > 500 ? 'Job description max limit is 500 word.' : null}</FormHelperText>
             </FormControl>
 
             <FormControl className='form-element'>
@@ -118,6 +124,7 @@ const EditOpening = (props) =>{
                     <MenuItem key={pos.id} value={pos.name}>{pos.name} </MenuItem>
                     ))}
                 </Select>
+                <FormHelperText className="error-text" id="my-helper-text">{(getOpeningInfo().position === '' && submitted === true) ? 'Please enter position.' : null}</FormHelperText>
             </FormControl>
 
             <FormControl className='form-element'>
@@ -133,7 +140,7 @@ const EditOpening = (props) =>{
             </CardActions>
         </div>
         </form>
-    </>
+    </div>
     );
 
     return(

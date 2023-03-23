@@ -12,11 +12,13 @@ import TextField from '@mui/material/TextField';
 import './AddOpening.css';
 import { createOpening } from '../services/openingServices';
 import { useNavigate } from 'react-router';
+// import Toaster from "./Toaster";
 
 
 const AddOpening = () =>{
     const initialFormState = { jobdescription: '', noofvacancy: '', position: '', yearofexperience: '' }
     const [submitted, setSubmitted] = useState(false);
+    const [toasterObj, setToasterObj] = useState(null);
     const [opening, setOpening] = useState(initialFormState);
     const [jdWordCount, setJdWordCount] = useState(0);
     const navigate = useNavigate();
@@ -49,10 +51,11 @@ const AddOpening = () =>{
       ];
 
     const addOpening = async (opening) => {
-        await createOpening(opening);
+        let response = await createOpening(opening);
+        console.log("response = ",response)
+        setToasterObj(response);
         setOpening(initialFormState);
         setSubmitted(false);
-        // const { color, setColor } = React.useContext(ThemeContext);
         navigate("/view");
     };
 
@@ -60,7 +63,6 @@ const AddOpening = () =>{
         const { name, value } = event.target;
         if(name === 'jobdescription'){
             setJdWordCount(value.split(' ').length);
-
         }
         setOpening({...opening, [name]: value});
     }
@@ -72,6 +74,7 @@ const AddOpening = () =>{
 
     const card = (
     <>
+        {/* {toasterObj ? (<Toaster data={toasterObj}/>) : null} */}
         <form
         onSubmit={event => {
             event.preventDefault();
@@ -121,6 +124,7 @@ const AddOpening = () =>{
                     <MenuItem key={pos.id} value={pos.name}>{pos.name} </MenuItem>
                     ))}
                 </Select>
+                <FormHelperText className="error-text" id="my-helper-text">{(getOpeningInfo().position === '' && submitted === true) ? 'Please enter position.' : null}</FormHelperText>
             </FormControl>
 
             <FormControl className='form-element'>
@@ -142,11 +146,7 @@ const AddOpening = () =>{
 
     return(
         <>
-            {/* <Box sx={{ display: 'block', mx: '2px', transform: 'scale(0.8)' }}> */}
-                {/* <Card variant="outlined"> */}
-                    {card}
-                    {/* </Card> */}
-            {/* </Box> */}
+            {card}
         </>
     )
 }

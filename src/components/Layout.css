@@ -6,8 +6,9 @@
   min-width: 100%;
 }
 
-.css-1v5z4dq-MuiPaper-root-MuiCard-root{
-  margin: 10px 35% !important;
+.layout{
+  margin: 50px auto 10px;
+  max-width: 600px;
   
 }
 .viewBtn{
@@ -19,11 +20,12 @@
 .viewBtn button{
   position: absolute;
   bottom: 8px;
-  right: 20px;
+  right: 40px;
 }
 
 @media screen and (max-width: 767px) {
   .css-1v5z4dq-MuiPaper-root-MuiCard-root{
-    margin: unset;
+    margin: unset !important;
+    border: unset !important;
   }
 }

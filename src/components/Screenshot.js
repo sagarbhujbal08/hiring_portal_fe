@@ -137,15 +137,15 @@ export default function Screenshot(props) {
         
       <div className="canvasContainer">
         <Header />
-        <section>
+        <section className='tableContent'>
             <TableContainer component={Paper}>
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                 <TableRow>
-                    <TableCell align="left">Job Description</TableCell>
-                    <TableCell align="left">No. of vacancy</TableCell>
-                    <TableCell align="left">Position</TableCell>
-                    <TableCell align="left">Year of experience</TableCell>
+                    <TableCell align="center" width="30%">Job Description</TableCell>
+                    <TableCell align="center">No. of vacancy</TableCell>
+                    <TableCell align="center">Position</TableCell>
+                    <TableCell align="center">Year of experience</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
@@ -154,10 +154,10 @@ export default function Screenshot(props) {
                     key={row._id}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                    <TableCell align="left">{row.jobdescription}</TableCell>
-                    <TableCell align="left">{row.noofvacancy}</TableCell>
-                    <TableCell align="left">{row.position}</TableCell>
-                    <TableCell align="left">{row.yearofexperience}</TableCell>
+                    <TableCell align="center" style={{ verticalAlign: 'top' }}>{row.jobdescription}</TableCell>
+                    <TableCell align="center" style={{ verticalAlign: 'top' }}>{row.noofvacancy}</TableCell>
+                    <TableCell align="center" style={{ verticalAlign: 'top' }}>{row.position}</TableCell>
+                    <TableCell align="center" style={{ verticalAlign: 'top' }}>{row.yearofexperience}</TableCell>
                     </TableRow>
                 ))}
                 </TableBody>

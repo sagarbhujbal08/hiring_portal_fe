@@ -10,6 +10,8 @@ import Icon from '@mui/material/Icon';
 import { Link, useNavigate } from "react-router-dom";
 import './ViewOpenings.css';
 import { getAllOpenings, deleteOpening } from '../services/openingServices';
+import LoadingSpinner from "./LoadingSpinner";
+
 
 const ViewOpenings = () =>{
     const [cnt, setCnt] = useState(0);
@@ -33,20 +35,22 @@ const ViewOpenings = () =>{
     const deleteCurrentOpening = async (data) => {
         await deleteOpening(data);
         setCnt(cnt+1);
-        // setOpenings(openings.filter((opening) => opening.id !== id));
     };
 
     return (
-        <>
-            <TableContainer component={Paper} className="tableContainer container">
+        <div className='tableContent'>
+            {openings.length === 0 ? (<LoadingSpinner />) : null}
+            {openings.length ? 
+            (<>
+                <TableContainer component={Paper} className="tableContainer container">
             <Table sx={{ minWidth: 650 }} aria-label="simple table">
                 <TableHead>
                 <TableRow>
-                    <TableCell align="left">Job Description</TableCell>
-                    <TableCell align="left">No. of vacancy</TableCell>
-                    <TableCell align="left">Position</TableCell>
-                    <TableCell align="left">Year of experience</TableCell>
-                    <TableCell align="left">Action</TableCell>
+                    <TableCell align="center" width="30%">Job Description</TableCell>
+                    <TableCell align="center">No. of vacancy</TableCell>
+                    <TableCell align="center">Position</TableCell>
+                    <TableCell align="center">Year of experience</TableCell>
+                    <TableCell align="center">Action</TableCell>
                 </TableRow>
                 </TableHead>
                 <TableBody>
@@ -55,11 +59,11 @@ const ViewOpenings = () =>{
                     key={row._id}
                     sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
                     >
-                    <TableCell align="left">{row.jobdescription}</TableCell>
-                    <TableCell align="left">{row.noofvacancy}</TableCell>
-                    <TableCell align="left">{row.position}</TableCell>
-                    <TableCell align="left">{row.yearofexperience}</TableCell>
-                    <TableCell align="left">
+                    <TableCell align="center" style={{ verticalAlign: 'top' }}>{row.jobdescription}</TableCell>
+                    <TableCell align="center" style={{ verticalAlign: 'top' }}>{row.noofvacancy}</TableCell>
+                    <TableCell align="center" style={{ verticalAlign: 'top' }}>{row.position}</TableCell>
+                    <TableCell align="center" style={{ verticalAlign: 'top' }}>{row.yearofexperience}</TableCell>
+                    <TableCell align="center" style={{ verticalAlign: 'top' }}>
                         <Icon className='action-icon' onClick={() => { editOpening(row)}}>edit</Icon>
                         <Icon className='action-icon' onClick={() => { deleteCurrentOpening(row)}}>delete</Icon>
                     </TableCell>
@@ -68,9 +72,10 @@ const ViewOpenings = () =>{
                 </TableBody>
             </Table>
             </TableContainer>
-            {/* {editing ? (<EditOpening opening={currentOpening} updateOpening={updateCurrentOpening}/>):null} */}
-            {openings.length ? <div className='container'><Link to="/report">Generate Report</Link></div> : null}
-        </>
+             <div className='container pt-3'><Link to="/report">Generate Report</Link></div>
+            </>)
+             : null}
+        </div>
     )
 }
 

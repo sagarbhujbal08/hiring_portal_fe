@@ -1,6 +1,11 @@
 .action-icon{
     cursor: pointer;
+    margin: 0 5px;
 }
 .tableContainer .css-1ygcj2i-MuiTableCell-root{
     font-weight: 700;
+}
+.tableContent {
+    min-height: 317px;
+    padding-top: 70px;
 }
