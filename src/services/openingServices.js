@@ -1,6 +1,6 @@
 import axios from 'axios';
-const basepath = 'https://tan-camel-wear.cyclic.app/opening/'
-// const basepath = 'http://localhost:5000/opening/'
+// const basepath = 'https://tan-camel-wear.cyclic.app/opening/'
+const basepath = 'http://localhost:5000/opening/'
 export async function createOpening(data) {
     const response = await axios.post(`${basepath}create`, data);
     return response.data;
