@@ -21,3 +21,11 @@
         width: 80%;
     } */
   }
+
+  .layout .css-12dv9jb {
+    min-width: 100%;
+  }
+  .layout{
+    margin: 50px auto 10px;
+    max-width: 600px;
+  }

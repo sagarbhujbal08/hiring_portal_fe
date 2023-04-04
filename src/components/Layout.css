@@ -2,24 +2,21 @@
     display: block;
     padding-top: 10px;
 }
-.layout .css-12dv9jb {
-  min-width: 100%;
-}
 
-.layout{
+.main-container{
   margin: 50px auto 10px;
   max-width: 600px;
   
 }
-.viewBtn{
+.main-container .viewBtn{
   display: flex;
   justify-content: center;
   position: relative;
 }
 
-.viewBtn button{
+.main-container .viewBtn button{
   position: absolute;
-  bottom: 8px;
+  bottom: 18px;
   right: 40px;
 }
 

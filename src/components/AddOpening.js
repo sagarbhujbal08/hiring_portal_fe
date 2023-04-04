@@ -8,9 +8,10 @@ import FormHelperText from "@mui/material/FormHelperText";
 import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Card from "@mui/material/Card";
 
 import "./AddOpening.css";
-import { createOpening } from "../services/openingServices";
 import { useNavigate } from "react-router";
 // import Toaster from "./Toaster";
 
@@ -22,7 +23,7 @@ const AddOpening = () => {
     yearofexperience: "",
   };
   const [submitted, setSubmitted] = useState(false);
-  const [toasterObj, setToasterObj] = useState(null);
+  //   const [toasterObj, setToasterObj] = useState(null);
   const [opening, setOpening] = useState(initialFormState);
   const [jdWordCount, setJdWordCount] = useState(0);
   const navigate = useNavigate();
@@ -55,9 +56,8 @@ const AddOpening = () => {
   ];
 
   const addOpening = async (opening) => {
-    let response = await createOpening(opening);
-    console.log("response = ", response);
-    setToasterObj(response);
+    // let response = await createOpening(opening);
+    // setToasterObj(response);
     setOpening(initialFormState);
     setSubmitted(false);
     navigate("/view");
@@ -204,7 +204,15 @@ const AddOpening = () => {
     </>
   );
 
-  return <>{card}</>;
+  return (
+    <div className="layout">
+      <Box>
+        <Card variant="outlined" className="cardContant">
+          {card}
+        </Card>
+      </Box>
+    </div>
+  );
 };
 
 export default AddOpening;
