@@ -10,6 +10,7 @@ import Select from "@mui/material/Select";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
+import { createOpening } from "../services/openingServices";
 
 import "./AddOpening.css";
 import { useNavigate } from "react-router";
@@ -56,7 +57,7 @@ const AddOpening = () => {
   ];
 
   const addOpening = async (opening) => {
-    // let response = await createOpening(opening);
+    let response = await createOpening(opening);
     // setToasterObj(response);
     setOpening(initialFormState);
     setSubmitted(false);
