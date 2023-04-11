@@ -207,11 +207,11 @@ const AddOpening = () => {
 
   return (
     <div className="layout">
-      <Box>
-        <Card variant="outlined" className="cardContant">
+      {/* <Box>
+        <Card variant="outlined" className="cardContant"> */}
           {card}
-        </Card>
-      </Box>
+        {/* </Card>
+      </Box> */}
     </div>
   );
 };

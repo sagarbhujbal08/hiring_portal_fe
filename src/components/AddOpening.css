@@ -12,6 +12,9 @@
 .form-grop .css-1nrlq1o-MuiFormControl-root{
     margin-bottom: 10px;
 }
+.needs-validation{
+    border: 1px solid #c4c4c4;
+}
 @media screen and (max-width: 767px) {
     .form-element {
       width: 100%;
@@ -20,6 +23,9 @@
     /* .form-grop{
         width: 80%;
     } */
+    .needs-validation{
+        border: unset;
+    }
   }
 
   .layout .css-12dv9jb {
